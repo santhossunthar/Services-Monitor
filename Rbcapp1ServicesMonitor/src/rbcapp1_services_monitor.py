@@ -1,2 +1,4 @@
+from httpd_service import HttpdService
+
 if __name__=="__main__":
-    print("Hello!")
+    print(HttpdService.getStatus())
