@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'RestApp',
-    'django_restframework',
+    'restApp',
+    'rest_framework',
+    'django_elasticsearch_dsl',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,20 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# REST Configuration
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+}
+
+# Elasticsearch configuration
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200',
+    },
+}

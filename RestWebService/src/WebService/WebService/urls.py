@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from RestApp import views
+from restApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add/', views.getServiceLogData),
+    path('add/', views.addServiceLogData),
     path('healthcheck/', views.checkHealth),
-    path('healthcheck/status/', checkHealthStatus),
+    path('healthcheck/service/', views.checkHealthStatus),
 ]
