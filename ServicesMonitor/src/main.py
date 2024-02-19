@@ -5,6 +5,16 @@ import logging.config
 import pathlib
 import json
 
+logger = logging.getLogger(__name__)
+
+def setupLogging():
+    logConfigFile = pathlib.Path("log_config.json")
+
+    with open(logConfigFile) as logConfig:
+        config = json.load(logConfig)
+
+    logging.config.dictConfig(config)
+
 def main():
     try:
         while True:
@@ -16,11 +26,5 @@ def main():
         logger.error(exc)
 
 if __name__ =="__main__":
-    logger = logging.getLogger(__name__)
-    logConfigFile = pathlib.Path("log_config.json")
-
-    with open(logConfigFile) as logConfig:
-        config = json.load(logConfig)
-
-    logging.config.dictConfig(config)
+    setupLogging()
     main()

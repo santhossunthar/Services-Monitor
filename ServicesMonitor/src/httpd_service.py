@@ -6,18 +6,23 @@ import pathlib
 import json
 
 logger = logging.getLogger(__name__)
-logConfigFile = pathlib.Path("log_config.json")
 
-with open(logConfigFile) as logConfig:
-    config = json.load(logConfig)
+def setupLogging():
+    logConfigFile = pathlib.Path("log_config.json")
 
-logging.config.dictConfig(config)
+    with open(logConfigFile) as logConfig:
+        config = json.load(logConfig)
+
+    logging.config.dictConfig(config)
 
 class HttpdService():
+    def __init__(self):
+        setupLogging()
+        
     def getStatus():
         for process in psutil.process_iter(["pid", "name"]):
             if "httpd" in process.info["name"].lower():
-                logger.info("UP", extra={"service_name": "httpd", "service_host": socket.getHostName()})
+                logger.info("UP", extra={"service_name": "httpd", "service_host": socket.gethostname()})
                 return True
-        logger.critical("DOWN", extra={"service_name": "httpd", "service_host": socket.getHostName()})
+        logger.critical("DOWN", extra={"service_name": "httpd", "service_host": socket.gethostname()})
 
