@@ -17,7 +17,7 @@ class HttpdService():
     def getStatus():
         for process in psutil.process_iter(["pid", "name"]):
             if "httpd" in process.info["name"].lower():
-                logger.info("UP")
+                logger.info("UP", extra={"service_name": "httpd", "service_host": socket.getHostName()})
                 return True
-        logger.critical("DOWN")
+        logger.critical("DOWN", extra={"service_name": "httpd", "service_host": socket.getHostName()})
 
