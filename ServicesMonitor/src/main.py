@@ -11,6 +11,7 @@ def main():
             httpdServiceStatus = HttpdService.getStatus()
             postgresServiceStatus = PostgresService.getStatus()
             rabbitmqServiceStatus = RabbitmqService.getStatus()
+            logger.info("hello")
     except Exception as exc:
         logger.error(exc)
 
