@@ -1,8 +1,8 @@
 # Python Projects</h1>
 
-## rbcapp1 Services Monitor 
+## Services Monitor 
 
-"rbcapp1" is a critical application that needs to be monitored and its status should be recorded into Elasticsearch. This Application depends on 3 services: httpd, rabbitMQ and postgreSQL.
+Critical application needs to be monitored and its status should be recorded into Elasticsearch. This Application depends on 3 services: httpd, rabbitMQ and postgreSQL.
 
 ## build
 
@@ -12,7 +12,7 @@
  ```
 2. Set up a virtual environment and activate it.
 ```sh
-  cd Rbcapp1ServicesMonitor
+  cd ServicesMonitor
   python -m venv env
   sources env/bin/activate
  ```
@@ -22,7 +22,7 @@
  ```
 4. locate the src directory to run the program.
 ```sh
-  python rbcapp1_services_monitor.py
+  python main.py
  ```
 
 
