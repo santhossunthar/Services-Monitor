@@ -1,6 +1,6 @@
 from httpd_service import HttpdService
-from postqresql_service import PostgreSqlService
-from rabbitmq_service import RabbitMQService
+from postgres_service import PostgresService
+from rabbitmq_service import RabbitmqService
 import logging.config
 import pathlib
 import json
@@ -9,8 +9,8 @@ def main():
     try:
         while True:
             httpdServiceStatus = HttpdService.getStatus()
-            postgreSqlServiceStatus = PostgreSqlService.getStatus()
-            rabbitMQServiceStatus = RabbitMQService.getStatus()
+            postgresServiceStatus = PostgresService.getStatus()
+            rabbitmqServiceStatus = RabbitmqService.getStatus()
     except Exception as exc:
         logger.error(exc)
 
