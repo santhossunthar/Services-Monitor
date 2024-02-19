@@ -1,0 +1,36 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "standard": {
+            "format": "%(asctime)s - %(levelname)s - %(message)s"
+        },
+        "json": {
+            "()": "json_formatter.JSONFormatter"
+        }
+    },
+    "handlers": {
+        "file_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "json",
+            "filename": "main.jsonl",
+            "maxBytes": 10485760,
+            "backupCount": 5
+        },
+        "console_handler": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "formatter": "standard"
+        }
+    },
+    "loggers": {
+        "root": {
+            "handlers": [
+                "file_handler",
+                "console_handler"
+            ],
+            "level": "DEBUG"
+        }
+    }
+}
