@@ -7,61 +7,18 @@
         }
     },
     "handlers": {
-        "monitor_service_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
+        "buffered_http_handler": {
+            "()": "buffered_http_handler.BufferedHttpHandler",
             "level": "INFO",
             "formatter": "json",
-            "filename": "monitor_service_log.json",
-            "maxBytes": 10485760,
-            "backupCount": 3
-        },
-        "httpd_service_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
-            "level": "INFO",
-            "formatter": "json",
-            "filename": "httpd_service_log.json",
-            "maxBytes": 10485760,
-            "backupCount": 3
-        },
-        "postgres_service_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
-            "level": "INFO",
-            "formatter": "json",
-            "filename": "postgres_service_log.json",
-            "maxBytes": 10485760,
-            "backupCount": 3
-        },
-        "rabbitmq_service_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
-            "level": "INFO",
-            "formatter": "json",
-            "filename": "rabbitmq_service_log.json",
-            "maxBytes": 10485760,
-            "backupCount": 3
+            "host": "http://localhost:8080",
+            "url": "/logs"
         }
     },
     "loggers": {
-        "__main__": {
+        "root": {
             "handlers": [
-                "monitor_service_handler"
-            ],
-            "level": "INFO"
-        },
-        "httpd_service": {
-            "handlers": [
-                "httpd_service_handler"
-            ],
-            "level": "INFO"
-        },
-        "postgres_service": {
-            "handlers": [
-                "postgres_service_handler"
-            ],
-            "level": "INFO"
-        },
-        "rabbitmq_service": {
-            "handlers": [
-                "rabbitmq_service_handler"
+                "buffered_http_handler"
             ],
             "level": "INFO"
         }
