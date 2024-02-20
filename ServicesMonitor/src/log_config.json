@@ -11,8 +11,8 @@
             "()": "buffered_http_handler.BufferedHttpHandler",
             "level": "INFO",
             "formatter": "json",
-            "host": "http://localhost:8080",
-            "url": "/logs"
+            "host": "http://localhost:8000",
+            "url": "/logs/"
         }
     },
     "loggers": {

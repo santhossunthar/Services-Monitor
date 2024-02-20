@@ -23,10 +23,11 @@ class BufferedHttpHandler(logging.handlers.HTTPHandler):
     def flush_buffer(self):
         if self.buffer:
             try:
-                logs = '\n'.join(self.buffer)
-                response = requests.post(f"{self.host}{self.url}", logs, headers={
-                    "Content-Type": "application/json",
-                })
+                logs = {
+                    "log_data": self.buffer
+                }
+                print(logs)
+                response = requests.post(f"{self.host}{self.url}", logs)
                 response.raise_for_status()
             except requests.RequestException as e:
                 logger.error(f"Error sending logs: {e}")
