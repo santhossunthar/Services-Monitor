@@ -3,10 +3,6 @@ from elasticsearch_dsl import Document, Text, Keyword
 
 # Create your models here.
 
-class HealthCheck(Document):
-    application = Keyword()
-    applicationStatus = Keyword()
-    host = Text()
-
-    class Index:
-        name = 'healthcheck'
+class LogEntry(models.Model):
+    timestamp = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()
