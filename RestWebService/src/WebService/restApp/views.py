@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import HealthCheck
@@ -9,11 +10,8 @@ from .serializers import HealthCheckSerializer
 @api_view(['POST'])
 def addServiceLogData(request):
     data = request.data
-    serializer = HealthCheckSerializer(data=data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
+    print(data)
+    return HttpResponse("Hello, World!")
 
 @api_view(['GET'])
 def checkHealth(request, service=None):

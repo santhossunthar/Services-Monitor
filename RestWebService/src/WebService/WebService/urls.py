@@ -19,7 +19,7 @@ from restApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add/', views.addServiceLogData),
+    path('logs/', views.addServiceLogData),
     path('healthcheck/', views.checkHealth),
     path('healthcheck/service/', views.checkHealthStatus),
 ]
