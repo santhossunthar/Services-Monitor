@@ -9,10 +9,8 @@ logger = logging.getLogger(__name__)
 
 def setupLogging():
     logConfigFile = pathlib.Path("log_config.json")
-
     with open(logConfigFile) as logConfig:
         config = json.load(logConfig)
-
     logging.config.dictConfig(config)
 
 def main():
@@ -21,7 +19,6 @@ def main():
             httpdServiceStatus = HttpdService.getStatus()
             postgresServiceStatus = PostgresService.getStatus()
             rabbitmqServiceStatus = RabbitmqService.getStatus()
-            logger.info("hello")
     except Exception as exc:
         logger.error(exc)
 
